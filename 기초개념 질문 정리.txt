@@ -1,0 +1,9 @@
+면접질문 정리
+
+- XML 과 JSON 의 차이점에 대해 설명해주세요.
+
+- MVC 패턴(Model - View - Controller)
+
+- MVVM 패턴(Model - View - ViewModel)
+
+- MVP 패턴
