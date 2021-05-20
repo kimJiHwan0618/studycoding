@@ -1,0 +1,11 @@
+리액트 시작전 기초 바닐라 자바스크립트 개념 정리
+
+-function
+
+-return
+
+-argument
+
+-variable
+
+-constants
