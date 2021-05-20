@@ -9,3 +9,8 @@
 -variable
 
 -constants
+
+-jsx
+
+-map 
+ -- Array 안 각각의 요소에 return 값을 반환
