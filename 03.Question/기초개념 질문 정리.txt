@@ -1,6 +1,11 @@
 면접질문 정리
 
 - XML 과 JSON 의 차이점에 대해 설명해주세요.
+  1. JSON이 XML 보다 데이터를 더 빨리 읽고 쓸수 있다. 
+  2. XML은 배열을 사용할 수 없지만 JSON은 가능하다.
+  3. JSON은 종료태그를 사용하지 않는다.
+
+
 
 - MVC 패턴(Model - View - Controller)
 
