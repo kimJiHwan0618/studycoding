@@ -1,46 +1,34 @@
 import React from "react";
 
-function Food({ fav, price }) {
-  
-  return (
-    <div>
-      <h3>I Love {fav}</h3>
-      <h4>{price}</h4>
-    </div>
-
-  )
-}
-
-const foodILike = [
-  { name : 'kimchi' , price : 30500 },
-  { name : 'potato' , price : 40500},
-  { name : 'hamburger' , price : 80500},
-  { name : 'pizza' , price : 10500},
-  { name : 'hotdog' , price : 90500},
-]
-
-const friends = [
-  'jihwan',
-  'yohan',
-  'donggu',
-  'youngjoon'
-]
-  
-friends.map(function(friend) {
-  return alert(friend + "♥")
-})
-
-// console.log(culruk)
-
-
-function App() {
-  return (
-    <div>
-      {foodILike.map(dinner => {
-        return <Food key={dinner.name} fav={dinner.name} price={dinner.price}/>
-      })}
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    count: 0,
+  };
+  add = () => {
+    this.setState((current) => ({ count: current.count + 1 }));
+  };
+  minus = () => {
+    this.setState((current) => ({ count: current.count - 1 }));
+  };
+  componentDidMount() {
+    console.log("component rendered");
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+  componentWillUnmount() {
+    console.log("DIE.. BOOM");
+  }
+  render() {
+    console.log("gdgd");
+    return (
+      <div>
+        <h1>The number is {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
