@@ -33,8 +33,8 @@ body,
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 50px;
-  width: 70%;
+  padding: 50px 0;
+  width: 90%;
   align-items: flex-start;
 }
 
@@ -42,19 +42,29 @@ body,
   width: 45%;
   background-color: white;
   margin-bottom: 70px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   color: #adaeb9;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.25);
 }
 
+.movies .moive:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.movies .moive p.summary {
+  white-space: normal;
+}
+
 .movies img {
-  max-width: 180px;
+  max-width: 280px;
+  max-height: 350px;
   width: 100%;
   position: relative;
   top: -50px;
