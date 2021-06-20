@@ -11,5 +11,9 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_API_ID,
   measurementId: process.env.REACT_APP_MESSAGIN_ID,
 };
+// REACT_APP_MEASUREMENT_Id=G-8GSGZQ44ST*/
+// REACT_APP_DATABASE_URL=https://myapp-project-123.firebaseio.com
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+export const authService = firebase.auth();
