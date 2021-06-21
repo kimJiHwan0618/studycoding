@@ -55,8 +55,6 @@ https://ko.javascript.info/closure
   - 메서드안 : 해당 메서드를 가르킵니다.
   - 이벤트 핸들러안 : 이벤트를 받는 html 요소
    
-
-
 동기 
  - 동기식은 동시에 일어나는 뜻이다. 요청과 그 결과가 동시에 일어난다는 말!
 
@@ -75,7 +73,6 @@ babel
 
 es6 (let, const, map, class)
 
-
 - restful API
 REST란, "웹에 존재하는 모든 자원(이미지, 동영상, DB 자원)에 고유한 
 URI를 부여해 활용" 하는 것으로,  자원을 정의하고 
@@ -87,9 +84,15 @@ API는 응용 프로그램에서 사용할 수 있도록,
 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 
 있게 만든 인터페이스를 뜻한다.
 
-
 - XML 과 JSON 의 차이점에 대해 설명해주세요.
   1. JSON이 XML 보다 데이터를 더 빨리 읽고 쓸수 있다. 
   2. XML은 배열을 사용할 수 없지만 JSON은 가능하다.
   3. JSON은 종료태그를 사용하지 않는다.
 
+- Spread Syntax
+
+- 삼항연산자
+
+- default parameters
+
+- template literals ( `hi my name is ${people.name}` )

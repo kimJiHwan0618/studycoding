@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spread Syntax</title>
+    <script>
+      // Spread Syntax
+      // Array
+      const animals = ["riot", "rabbit", "tuttle"];
+      const food = ["banana", "apple", "tomato"];
+
+      // Object
+      const mina = {
+        age: 20,
+        sex: "girl",
+        hope: "programer",
+      };
+
+      const alex = {
+        age: 28,
+        sex: "boy",
+        hope: "guitarlist",
+      };
+
+      const peopleArr = [mina, alex];
+      const peopleArr2 = [...peopleArr];
+      const peopleArr3 = [
+        ...peopleArr,
+        { country: "korea", test: "test" },
+        { hihi: "hihi" },
+      ];
+
+      // console.log(peopleArr3);
+      // console.log(peopleArr2);
+      // console.log(peopleArr);
+      // console.log(mina);
+      // console.log(alex);
+      // console.log(animals);
+      // console.log(food);
+
+      const animalsFood = [...animals, ...food];
+      // console.log(animalsFood);
+      const people = { ...alex, ...mina };
+      // console.log(people);
+    </script>
+  </head>
+  <body></body>
+</html>
