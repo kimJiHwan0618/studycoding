@@ -1,28 +1,28 @@
 import { dbService } from "fbase";
 import React, { useState, useEffect } from "react";
+import Nweet from "../components/Nweet";
 
-const Home = () => {
+const Home = ({ userObj }) => {
+  console.log(userObj);
   const [tweet, setTweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const getNweets = async () => {
-    const dbNweets = await dbService.collection("tweets").get();
-    dbNweets.forEach((document) => {
-      console.log(document.data());
-      const nweetObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setNweets((prev) => [nweetObject, ...prev]);
-    });
-  };
+
   useEffect(() => {
-    getNweets();
+    dbService.collection("tweets").onSnapshot((snapshot) => {
+      console.log("somethie happened");
+      const tweetArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setNweets(tweetArray);
+    });
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
     await dbService.collection("tweets").add({
-      tweet,
+      text: tweet,
       createdAt: Date.now(),
+      createId: userObj.uid,
     });
     setTweet("");
   };
@@ -32,6 +32,7 @@ const Home = () => {
     } = event;
     setTweet(value);
   };
+  console.log(nweets);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -46,9 +47,11 @@ const Home = () => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.tweet}</h4>
-          </div>
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.createId === userObj.uid}
+          />
         ))}
       </div>
     </div>
