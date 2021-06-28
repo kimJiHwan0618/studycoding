@@ -1,16 +1,17 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
+import { v4 as uuidv4 } from "uuid";
 import React, { useState, useEffect } from "react";
 import Nweet from "../components/Nweet";
 
 const Home = ({ userObj }) => {
-  console.log(userObj);
+  // console.log(userObj);
   const [tweet, setTweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState("");
 
   useEffect(() => {
     dbService.collection("tweets").onSnapshot((snapshot) => {
-      console.log("somethie happened");
+      // console.log("somethie happened");
       const tweetArray = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -20,12 +21,21 @@ const Home = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("tweets").add({
+    let attachmentUrl = "";
+    if (attachment !== "") {
+      const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+      const response = await fileRef.putString(attachment, "data_url");
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
+    const nweetObj = {
       text: tweet,
       createdAt: Date.now(),
       createId: userObj.uid,
-    });
+      attachmentUrl,
+    };
+    await dbService.collection("tweets").add(nweetObj);
     setTweet("");
+    setAttachment("");
   };
   const onChange = (event) => {
     const {
@@ -47,12 +57,8 @@ const Home = ({ userObj }) => {
     };
     reader.readAsDataURL(theFile);
   };
-  const clearPhoto = (evt) => {
-    const {
-      target: { value },
-    } = evt;
-    console.log(value);
-  };
+  const clearAttachment = (evt) => setAttachment(null);
+  // console.log(nweets);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -68,7 +74,7 @@ const Home = ({ userObj }) => {
         {attachment && (
           <div>
             <img src={attachment} width="50px" height="50px" alt="testImg" />
-            <buttom onClick={clearPhoto}>Cancel upload</buttom>
+            <button onClick={clearAttachment}>Cancel upload</button>
           </div>
         )}
       </form>
