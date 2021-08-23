@@ -1,23 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button, Header } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import styles from "./styles/Item.module.css";
 
 export default function Item({ item }) {
-  const [test, setTest] = useState();
-
-  useEffect(() => {
-    console.log(test);
-  }, [test]);
-
-  const testButton = () => {
-    if (test < 2) {
-      setTest(2);
-    } else {
-      setTest(test + 1);
-    }
-  };
-
   const {
     image_link,
     name,
@@ -41,9 +27,7 @@ export default function Item({ item }) {
             {category ? `${category}/` : ""}
             {product_type}
           </span>
-          <Button onClick={testButton} color="orange">
-            구매하기
-          </Button>
+          <button>구매하기</button>
         </div>
       </div>
       <Header as="h3">Description</Header>

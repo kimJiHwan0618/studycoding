@@ -5,14 +5,13 @@ import styles from "./styles/ItemList.module.css";
 import Link from "next/link";
 
 export default function ItemList({ list }) {
-  console.log(styles);
   return (
     <div>
       <Grid columns={3}>
         <Grid.Row>
           {list.map((item) => (
             <Grid.Column key={item.id}>
-              <Link href={`/view/${item.id}`}>
+              <Link href={`/view/[id]`} as={`/view/${item.id}`}>
                 <a>
                   <div className={styles.wrap}>
                     <img
