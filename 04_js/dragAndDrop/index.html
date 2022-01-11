@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dragAndDrop</title>
+    <style>
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      div,
+      ul,
+      li,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+      }
+      main > section {
+        width: 45%;
+        border: 1px solid #999;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .item {
+        width: 23%;
+        margin: 10px 1%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 10px;
+        overflow: hidden;
+        color: white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+      }
+      .item ul {
+        background: rgb(60, 60, 216);
+        box-sizing: border-box;
+        padding: 6px;
+        height: 80%;
+      }
+      .item p {
+        text-align: center;
+        height: 20%;
+        background: rgb(12, 12, 134);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev, asas) {
+        console.log(asas);
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+
+        if (asas == "minus") {
+          document
+            .getElementById("a1")
+            .appendChild(document.getElementById(data));
+        } else if (asas == "add") {
+          console.log(document.getElementById("b1"));
+          document
+            .getElementById("b1")
+            .appendChild(document.getElementById(data));
+        }
+        // ev.target.appendChild();
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <img
+      id="drag1"
+      src="img_logo.gif"
+      draggable="true"
+      ondragstart="drag(event)"
+      width="336"
+      height="69"
+    /> -->
+
+    <main>
+      <section
+        ondrop="drop(event, 'minus')"
+        ondragover="allowDrop(event)"
+        id="a1"
+      >
+        <div
+          class="item"
+          id="content1"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content2"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>삶의 영역별 음주영향 확인</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content3"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>행동 활성화</li>
+            <li>동기강화 부스터</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content4"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>정서조절</li>
+            <li>스트레스관리</li>
+            <li>목표설정</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content5"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content6"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content7"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content8"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+        <div
+          class="item"
+          id="content9"
+          draggable="true"
+          ondragstart="drag(event)"
+        >
+          <ul>
+            <li>이전 성공 경험</li>
+            <li>긍정 경험 탐색</li>
+            <li>자기효능강증진</li>
+          </ul>
+          <p>동기면담</p>
+        </div>
+      </section>
+      <section
+        ondrop="drop(event, 'add')"
+        ondragover="allowDrop(event)"
+        id="b1"
+      ></section>
+    </main>
+  </body>
+</html>
